@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('marks', function (Blueprint $table) {
+        Schema::create('department_value_added_programs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
-            $table->foreignId('subject_id')->constrained('subjects')->onDelete('cascade');
-            $table->float('marks');
+            $table->foreignId('department_id')->constrained('departments')->onDelete('cascade');
+            $table->string('value_added_program_title');
+            $table->string('co_ordinator_name');
+            $table->integer('intake_capacity');
+            $table->integer('duration_in_months');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('marks');
+        Schema::dropIfExists('department_value_added_programs');
     }
 };

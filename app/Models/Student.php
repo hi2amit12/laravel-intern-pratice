@@ -9,11 +9,17 @@ class Student extends Model
 {
     use HasFactory;
 
-     protected $fillable = ['name', 'age', 'class_id'];
+    protected $fillable = [
+        'name',
+        'age',
+        'classroom_id',
+        'roll_no',
+        'email',
+    ];
 
     public function classroom()
     {
-        return $this->belongsTo(Classroom::class, 'class_id');
+        return $this->belongsTo(Classroom::class);
     }
 
     public function marks()

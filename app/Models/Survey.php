@@ -5,16 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Classroom extends Model
+class Survey extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'survey_title',
+        'year',
+        'pdf_path'
     ];
-
-    public function students()
-    {
-        return $this->hasMany(Student::class);
-    }
 }

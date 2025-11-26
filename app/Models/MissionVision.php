@@ -5,16 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Classroom extends Model
+class MissionVision extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-    ];
+    protected $table = 'mission_vision';
 
-    public function students()
-    {
-        return $this->hasMany(Student::class);
-    }
+    protected $fillable = [
+        'mission',
+        'vision'
+    ];
 }
