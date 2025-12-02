@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AboutCollegeController;
 use App\Http\Controllers\AcademicController;
+use App\Http\Controllers\AlumniCommitteeController;
+use App\Http\Controllers\AlumniMemberController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommitteeController;
 use App\Http\Controllers\CommitteeMemberController;
@@ -18,6 +20,7 @@ use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SurveyController;
+use App\Http\Controllers\TopAlumniController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -142,3 +145,30 @@ Route::post('/departments/{department}/images', [DepartmentImageController::clas
 Route::put('/departments/{department}/images/{image}', [DepartmentImageController::class, 'update']);
 Route::delete('/departments/{department}/images/{image}', [DepartmentImageController::class, 'destroy']);
 Route::post('/departments/{department}/images/reorder', [DepartmentImageController::class, 'updateOrder']);
+
+Route::get('/alumni-members', [AlumniMemberController::class, 'index']);
+Route::get('/alumni-members/{id}', [AlumniMemberController::class, 'show']);
+Route::post('/alumni-members', [AlumniMemberController::class, 'store']);
+Route::put('/alumni-members/{id}', [AlumniMemberController::class, 'update']);
+Route::delete('/alumni-members/{id}', [AlumniMemberController::class, 'destroy']);
+
+
+Route::get('/alumni-committee/available-members', [AlumniCommitteeController::class, 'getAvailableMembers']);
+Route::get('/alumni-committee/all-members', [AlumniCommitteeController::class, 'getAllMembers']);
+
+
+Route::get('/alumni-committee', [AlumniCommitteeController::class, 'index']);
+Route::get('/alumni-committee/{id}', [AlumniCommitteeController::class, 'show']);
+Route::post('/alumni-committee', [AlumniCommitteeController::class, 'store']);
+Route::put('/alumni-committee/{id}', [AlumniCommitteeController::class, 'update']);
+Route::delete('/alumni-committee/{id}', [AlumniCommitteeController::class, 'destroy']);
+
+Route::get('/top-alumni/available-members', [TopAlumniController::class, 'getAvailableMembers']);
+Route::get('/top-alumni/all-members', [TopAlumniController::class, 'getAllMembers']);
+
+// General CRUD routes
+Route::get('/top-alumni', [TopAlumniController::class, 'index']);
+Route::get('/top-alumni/{id}', [TopAlumniController::class, 'show']);
+Route::post('/top-alumni', [TopAlumniController::class, 'store']);
+Route::put('/top-alumni/{id}', [TopAlumniController::class, 'update']);
+Route::delete('/top-alumni/{id}', [TopAlumniController::class, 'destroy']);
